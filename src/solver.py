@@ -49,7 +49,7 @@ from .schema import (
 from .sketches import LabelNode, SketchNode, Sketch
 from .loggable import Loggable, LogLevel, show_progress
 import networkx
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from graphviz import Digraph
 
 
@@ -82,7 +82,7 @@ class SolverConfig:
     # Use `naive`, `pathexpr`, or `dfa` f
     graph_solver: str = "dfa"
     # Graph solver configuration
-    graph_solver_config: GraphSolverConfig = GraphSolverConfig()
+    graph_solver_config: GraphSolverConfig = field(default_factory=GraphSolverConfig)
     # After the initial bottom-up face, an optional pass to take the most general types of those
     # functions and re-propagating to make most specific types at their callsites.
     top_down_propagation: bool = False
